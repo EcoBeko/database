@@ -1,3 +1,20 @@
+-- Extensions
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+
+-- Enum
+create type gender_enum as enum ('male', 'female');
+create type role_enum as enum ('user', 'admin', 'moderator');
+create type generic_status_enum as enum ('enabled', 'disabled');
+create type chat_type_enum as enum ('user', 'group');
+create type chat_user_type_enum as enum ('participant', 'admin');
+create type resource_type_enum as enum ('image', 'link');
+create type recycling_point_type_enum as enum ('recycling', 'utilization');
+create type eco_project_status_enum as enum ('announced', 'ongoing', 'updated', 'finished');
+create type subscription_status_enum as enum ('moderator', 'enabled', 'disabled');
+create type post_type_enum as enum ('article', 'post');
+create type author_type_enum as enum ('user', 'community');
+
+-- Tables
 -- Global
 create table resources (
   id UUID default uuid_generate_v4(),
@@ -183,3 +200,34 @@ create table comments (
   author_id UUID not null,
   PRIMARY KEY(id)
 );
+
+-- Indexes
+create index resources_entity_id_idx on resources(entity_id, id)
+where type = 'link';
+
+create index users_role_idx on users(role, id)
+where status = 'disabled';
+
+create index friends_user_id_idx on friends(user_id);
+
+create index user_chats_user_id_idx on user_chats(user_id);
+create index user_chats_chat_id_idx on user_chats(chat_id);
+
+create index messages_chat_id_idx on messages(chat_id);
+
+create index recycling_points_type_idx on recycling_points(type);
+
+create index recycling_point_accepts_waste_type_id_idx on recycling_point_accepts(waste_type_id);
+
+create index stats_types_maps_stats_type_id_waste_type_id_idx on stats_types_maps(stats_type_id, waste_type_id);
+
+create index stats_records_user_id_idx on stats_records(user_id);
+
+create index eco_projects_status_idx on eco_projects(status);
+
+create index subscriptions_community_id_idx on subscriptions(community_id);
+create index subscriptions_user_id_idx on subscriptions(user_id);
+
+create index posts_author_id_idx on posts(author_id);
+
+create index comments_post_id_idx on comments(post_id);

@@ -1,0 +1,11 @@
+create type gender_enum as enum ('male', 'female');
+create type role_enum as enum ('user', 'admin', 'moderator');
+create type generic_status_enum as enum ('enabled', 'disabled');
+create type chat_type_enum as enum ('user', 'group');
+create type chat_user_type_enum as enum ('participant', 'admin');
+create type resource_type_enum as enum ('image', 'link');
+create type recycling_point_type_enum as enum ('recycling', 'utilization');
+create type eco_project_status_enum as enum ('announced', 'ongoing', 'updated', 'finished');
+create type subscription_status_enum as enum ('moderator', 'enabled', 'disabled');
+create type post_type_enum as enum ('article', 'post');
+create type author_type_enum as enum ('user', 'community');
