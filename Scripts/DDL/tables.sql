@@ -81,6 +81,7 @@ create table recycling_points (
   site UUID,
   type RECYCLING_POINT_TYPE_ENUM not null,
   additional_info VARCHAR,
+  city VARCHAR not null,
   PRIMARY KEY(id),
   CONSTRAINT fk_resources FOREIGN KEY(site) REFERENCES resources(id)
 );
