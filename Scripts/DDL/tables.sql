@@ -145,7 +145,7 @@ create table eco_projects (
 create table communities (
   id UUID default uuid_generate_v4(),
   title VARCHAR not null,
-  main_image UUID not null,
+  main_image UUID,
   description VARCHAR not null,
   admin_id UUID not null,
   status GENERIC_STATUS_ENUM not null,
