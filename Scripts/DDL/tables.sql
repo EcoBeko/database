@@ -67,7 +67,7 @@ create table messages (
 create table waste_types (
   id UUID default uuid_generate_v4(),
   title VARCHAR not null,
-  icon UUID not null,
+  icon UUID,
   PRIMARY KEY(id),
   CONSTRAINT fk_resources FOREIGN KEY(icon) REFERENCES resources(id)
 );
@@ -102,7 +102,7 @@ create table stats_types (
   id UUID default uuid_generate_v4(),
   title VARCHAR not null,
   postfix VARCHAR not null,
-  icon UUID not null,
+  icon UUID,
   PRIMARY KEY(id),
   CONSTRAINT fk_resources FOREIGN KEY(icon) REFERENCES resources(id)
 );
@@ -133,7 +133,7 @@ create table eco_projects (
   id UUID default uuid_generate_v4(),
   title VARCHAR not null,
   description VARCHAR not null,
-  main_image UUID not null,
+  main_image UUID,
   link UUID not null,
   date DATE not null,
   status ECO_PROJECT_STATUS_ENUM not null,
