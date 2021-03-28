@@ -9,3 +9,4 @@ create type eco_project_status_enum as enum ('announced', 'ongoing', 'updated', 
 create type subscription_status_enum as enum ('moderator', 'enabled', 'disabled');
 create type post_type_enum as enum ('article', 'post');
 create type author_type_enum as enum ('user', 'community');
+create type friend_status_enum as enum ('created', 'accepted');

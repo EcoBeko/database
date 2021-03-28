@@ -13,7 +13,7 @@ create table users (
   id UUID default uuid_generate_v4(),
   first_name VARCHAR,
   last_name VARCHAR,
-  username VARCHAR not null unique,
+  username VARCHAR not null,
   password VARCHAR not null,
   gender GENDER_ENUM,
   avatar UUID,
@@ -28,6 +28,7 @@ create table friends (
   user_id UUID not null,
   friend_id UUID not null,
   date DATE not null,
+  status FRIEND_STATUS_ENUM not null,
   PRIMARY KEY(id),
   CONSTRAINT fk_users_user FOREIGN KEY(user_id) REFERENCES users(id),
   CONSTRAINT fk_users_friend FOREIGN KEY(friend_id) REFERENCES users(id)
