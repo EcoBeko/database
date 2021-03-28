@@ -75,6 +75,7 @@ create table waste_types (
 create table recycling_points (
   id UUID default uuid_generate_v4(),
   title VARCHAR not null,
+  address VARCHAR not null,
   working_time VARCHAR,
   phone VARCHAR not null,
   latitude NUMERIC not null,
