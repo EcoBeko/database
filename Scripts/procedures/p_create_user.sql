@@ -6,7 +6,7 @@ create or replace procedure p_create_user(
 		_gender GENDER_ENUM,
 		_avatar_path varchar,
 		_role ROLE_ENUM,
-		inout _id UUID
+		inout _id UUID default uuid_nil()
 		)
 	language plpgsql
 as

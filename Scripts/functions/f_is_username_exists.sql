@@ -1,4 +1,4 @@
-create or replace function f_is_username_exists(_username varchar, _role varchar)
+create or replace function f_is_username_exists(_username varchar, _role ROLE_ENUM)
 	returns boolean
 	language plpgsql
 as
