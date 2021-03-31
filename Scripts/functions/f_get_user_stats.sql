@@ -11,7 +11,7 @@ begin
 		st.title, 
 		st.postfix, 
 		(select r.path from resources r where r.id = st.icon) as icon, 
-		sum(sr.value * stm.coefficient) 
+		sum(sr.value * stm.coefficient) as "sum"
 	from stats_types st 
 		join stats_types_maps stm on st.id = stm.stats_type_id 
 		join stats_records sr on stm.waste_type_id = sr.waste_type_id
