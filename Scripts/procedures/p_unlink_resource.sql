@@ -12,8 +12,10 @@ begin
 	set entity_id = uuid_nil()
 	where id = _id;
 
-	execute 'update $1 ' || 'set $2 = null where id = $3'
-	using _table_name, _table_property, _table_id;
+	if _table_name is not null and _table_property is not null then
+		execute 'update $1 ' || 'set $2 = null where id = $3'
+		using _table_name, _table_property, _table_id;
+	end if;
 
 	delete from resources
 	where id = _id;

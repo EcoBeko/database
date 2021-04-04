@@ -3,7 +3,7 @@ create table resources (
   id UUID default uuid_generate_v4(),
   path VARCHAR not null,
   type RESOURCE_TYPE_ENUM not null,
-  entity_id UUID not null,
+  entity_id UUID,
   date TIMESTAMP not null,
   PRIMARY KEY(id)
 );
