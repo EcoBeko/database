@@ -42,7 +42,3 @@ begin
 end
 $$
 
-select * from f_search_recycling_points('almaty', 'recycling', '{}') 
-
-select * from recycling_points rp 
-where rp."type" = 'recycling'

@@ -26,8 +26,9 @@ begin
 	from posts p
 	where p.author_id in 
 		(
-			select friend_id as "id" from friends
-			where user_id = _user_id
+			select f.friend_id as "id" from friends f
+			where f.user_id = _user_id
+			and f.status = 'accepted'
 			union
 			select community_id as "id" from subscriptions
 			where user_id = _user_id
