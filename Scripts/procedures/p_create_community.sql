@@ -3,7 +3,7 @@ create or replace procedure p_create_community(
 		_image_path varchar, 
 		_description varchar, 
 		_admin_id UUID,
-		inout _id UUID
+		inout _id UUID default uuid_nil()
 		)
 	language plpgsql
 as
@@ -15,8 +15,11 @@ begin
 	insert into communities (title, main_image, description, admin_id, status)
 	values (_title, null, _description, _admin_id, 'enabled') returning id into com_id;
 
+	insert into subscriptions (user_id, community_id, status)
+	values (_admin_id, com_id, 'moderator');
+
 	if (_image_path is not null) then
-		call p_create_resource(_image_path, 'image', com_id, image_id);
+		call p_create_resource('communities/' || com_id || '/' || _image_path, 'image', com_id, image_id);
 	
 		update communities 
 		set main_image = image_id
@@ -27,3 +30,4 @@ begin
 	_id = com_id;
 end
 $$
+
