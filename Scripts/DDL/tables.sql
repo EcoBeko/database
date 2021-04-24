@@ -135,7 +135,7 @@ create table eco_projects (
   title VARCHAR not null,
   description VARCHAR not null,
   main_image UUID,
-  link UUID not null,
+  link UUID,
   date DATE not null,
   status ECO_PROJECT_STATUS_ENUM not null,
   PRIMARY KEY(id),
