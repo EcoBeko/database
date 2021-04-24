@@ -1,4 +1,4 @@
-create or replace procedure p_subscribe_user(_user_id UUID, _community_id UUID)
+create or replace procedure t(_user_id UUID, _community_id UUID)
 	language plpgsql
 as
 $$
@@ -7,3 +7,6 @@ begin
 	values (_user_id, _community_id, 'enabled');
 end
 $$
+
+select * from users u 
+where u."role" <> 'user'
